@@ -1,4 +1,6 @@
 
+process.chdir(__dirname);
+
 import {ok, strictEqual} from 'assert';
 import * as env from '..';
 
@@ -95,20 +97,56 @@ describe('env', () => {
         it('doesn\'t exist', () => ok(!env.existsBoolean('FOO')));
     });
 
-    // describe('.add', () => {
-    //
-    // });
-    //
-    // describe('.remove', () => {
-    //
-    // });
-    //
-    // describe('.load', () => {
-    //
-    // });
+    describe('.add', () => {
+
+        it('create', () => {
+            env.add('FOO', 'bar');
+            strictEqual(env.get('FOO'), 'bar');
+        });
+
+        it('update', () => {
+            env.add('FOO', 'baz');
+            strictEqual(env.get('FOO'), 'baz');
+        });
+
+    });
+
+    describe('.remove', () => {
+
+        it('exists', () => {
+            env.remove('FOO');
+            ok(!env.exists('FOO'));
+        });
+
+        it('doesn\'t exist', () => {
+            env.remove('FOO');
+            ok(!env.exists('FOO'));
+        });
+
+    });
+
+    describe('.load', () => {
+
+        it('named', done => {
+            env.load('.examplerc').then(() => {
+                envContains({EXAMPLE: 'hello world!', EX_INT: exInt.toString()});
+                done();
+            }).catch(done);
+        });
+
+        it('autoload', () => {
+            envContains({BAR: 'foo', EX_STR: 'hello world'})
+        });
+
+    });
 
 });
 
-//     export function add(name: string, value: any): void {
-//     export function remove(name: string): void {
-//     export function load(file: string = '.envrc', encoding: string = 'utf8'): void {
+
+function envContains(data: Object): void {
+
+    let keys = Object.keys(data);
+    for(let k of keys) {
+        strictEqual(process.env[k], data[k]);
+    }
+}

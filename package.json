@@ -1,7 +1,7 @@
 {
   "name": "@zenox/env",
   "version": "1.0.0",
-  "description": "Zenox Framrwork - Manage environment variables.",
+  "description": "Zenox Framework - Manage environment variables and load it from file",
   "keywords": [
     "zenox",
     "config",
