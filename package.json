@@ -1,0 +1,48 @@
+{
+  "name": "@zenox/env",
+  "version": "1.0.0",
+  "description": "Zenox Framrwork - Manage environment variables.",
+  "keywords": [
+    "zenox",
+    "config",
+    "environment"
+  ],
+  "license": "MIT",
+  "main": "src/env.js",
+  "typings": "src/env",
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "dev": "gulp dev",
+    "test": "gulp build && gulp test",
+    "prepublish": "gulp build"
+  },
+  "author": {
+    "name": "Albert Cuartiella",
+    "email": "cuarti1992@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuarti/zenox-env.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cuarti/zenox-env/issues"
+  },
+  "homepage": "https://github.com/cuarti/zenox-env#readme",
+  "dependencies": {
+    "@types/node": "^7.0.8",
+    "@zenox/rcfile": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.40",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^4.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-tslint": "^7.1.0",
+    "gulp-typescript": "^3.1.6",
+    "merge2": "^1.0.3",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
+  }
+}
