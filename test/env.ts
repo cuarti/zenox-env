@@ -12,10 +12,10 @@ describe('env', () => {
     const exFloat = 14.28;
     const exBool = true;
 
-    process.env['EX_STR'] = exStr;
-    process.env['EX_INT'] = exInt;
-    process.env['EX_FLOAT'] = exFloat;
-    process.env['EX_BOOL'] = exBool;
+    process.env.EX_STR = exStr;
+    process.env.EX_INT = exInt.toString();
+    process.env.EX_FLOAT = exFloat.toString();
+    process.env.EX_BOOL = exBool.toString();
 
     describe('.get', () => {
         it('is string', () => strictEqual(env.get('EX_STR'), exStr));
@@ -135,7 +135,7 @@ describe('env', () => {
         });
 
         it('autoload', () => {
-            envContains({BAR: 'foo', EX_STR: 'hello world'})
+            envContains({BAR: 'foo', EX_STR: 'hello world'});
         });
 
     });
